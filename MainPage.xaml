@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CaganCakir_Calculator.MainPage"
+             Title="Calculator"
+             BackgroundColor="#202020">
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#3B3B3B" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+        <Style x:Key="FuncButton" TargetType="Button">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#323232" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+        <Style x:Key="EqualsButton" TargetType="Button">
+            <Setter Property="FontSize" Value="26" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="#76B9ED" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Padding="12" RowSpacing="0" ColumnSpacing="0"
+          RowDefinitions="Auto,Auto,*,*,*,*,*"
+          ColumnDefinitions="*,*,*,*"
+          MaximumWidthRequest="480">
+
+        <!-- Operation history (e.g. "45 + 25 =") -->
+        <Label x:Name="HistoryLabel"
+               Grid.Row="0" Grid.ColumnSpan="4"
+               Text=""
+               FontSize="20"
+               TextColor="#A0A0A0"
+               HorizontalTextAlignment="End"
+               LineBreakMode="HeadTruncation"
+               Margin="6,20,6,0"
+               MinimumHeightRequest="30" />
+
+        <!-- Active input / result (e.g. "70") -->
+        <Label x:Name="DisplayLabel"
+               Grid.Row="1" Grid.ColumnSpan="4"
+               Text="0"
+               FontSize="52"
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalTextAlignment="End"
+               LineBreakMode="HeadTruncation"
+               Margin="6,0,6,16" />
+
+        <!-- 1.satır -->
+        <Button Grid.Row="2" Grid.Column="0" Text="C"  Style="{StaticResource FuncButton}" Clicked="OnClearClicked" />
+        <Button Grid.Row="2" Grid.Column="1" Text="⌫"  Style="{StaticResource FuncButton}" Clicked="OnBackspaceClicked" />
+        <Button Grid.Row="2" Grid.Column="2" Text="%"  Style="{StaticResource FuncButton}" Clicked="OnPercentClicked" />
+        <Button Grid.Row="2" Grid.Column="3" Text="÷"  Style="{StaticResource FuncButton}" Clicked="OnOperatorClicked" />
+
+        <!-- 2.satır -->
+        <Button Grid.Row="3" Grid.Column="0" Text="7" Clicked="OnDigitClicked" />
+        <Button Grid.Row="3" Grid.Column="1" Text="8" Clicked="OnDigitClicked" />
+        <Button Grid.Row="3" Grid.Column="2" Text="9" Clicked="OnDigitClicked" />
+        <Button Grid.Row="3" Grid.Column="3" Text="×" Style="{StaticResource FuncButton}" Clicked="OnOperatorClicked" />
+
+        <!--  3.satır -->
+        <Button Grid.Row="4" Grid.Column="0" Text="4" Clicked="OnDigitClicked" />
+        <Button Grid.Row="4" Grid.Column="1" Text="5" Clicked="OnDigitClicked" />
+        <Button Grid.Row="4" Grid.Column="2" Text="6" Clicked="OnDigitClicked" />
+        <Button Grid.Row="4" Grid.Column="3" Text="-" Style="{StaticResource FuncButton}" Clicked="OnOperatorClicked" />
+
+        <!-- 4.satır -->
+        <Button Grid.Row="5" Grid.Column="0" Text="1" Clicked="OnDigitClicked" />
+        <Button Grid.Row="5" Grid.Column="1" Text="2" Clicked="OnDigitClicked" />
+        <Button Grid.Row="5" Grid.Column="2" Text="3" Clicked="OnDigitClicked" />
+        <Button Grid.Row="5" Grid.Column="3" Text="+" Style="{StaticResource FuncButton}" Clicked="OnOperatorClicked" />
+
+        <!-- 5.satır -->
+        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="0" Clicked="OnDigitClicked" />
+        <Button Grid.Row="6" Grid.Column="2" Text="." Clicked="OnDecimalClicked" />
+        <Button Grid.Row="6" Grid.Column="3" Text="=" Style="{StaticResource EqualsButton}" Clicked="OnEqualsClicked" />
+    </Grid>
+</ContentPage>
